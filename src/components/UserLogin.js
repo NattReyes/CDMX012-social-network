@@ -38,11 +38,11 @@ export const UserLogin = () => {
 
     `;
 
-  const divUserLogin = document.createElement('div');
+  const divUserLogin = document.createElement("div");
   divUserLogin.innerHTML = htmlUserLogin;
 
-  // const btnRegister = divHome.querySelector('#registerButton');
-  // btnRegister.addEventListener('click', () => onNavigate('/register'));
+  const btnRegister = divUserLogin.querySelector("#registerButton");
+  btnRegister.addEventListener("click", () => onNavigate("/register"));
 
   return divUserLogin;
 };

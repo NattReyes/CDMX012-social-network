@@ -33,7 +33,9 @@ export const Register = () => {
             </div>
             <br>
             <p id="error-message-register"></p>
-            <button id="registerButton"class="submit-btn">Registrarse</button>
+
+            <button id="registerButton" class="submitButton">Registrarse</button>
+
         </form>
         
         <div class="diffStep">
@@ -46,9 +48,11 @@ export const Register = () => {
 
     `;
 
+
   const divRegister = document.createElement('div');
   divRegister.innerHTML = htmlRegister;
 
+  // Botón para enviar datos de registro
   const registerButtonAlert = divRegister.querySelector('#registerButton');
   registerButtonAlert.addEventListener('click', (e) => {
     e.preventDefault();
@@ -57,6 +61,11 @@ export const Register = () => {
     console.log(userMail, userPassword);
     createUser(userMail, userPassword);
   });
+    
+   // Botón para volver a inicio de sesión
+   const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
+   btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
+
 
   const btnExistingUser = divRegister.querySelector('#buttonExistingUser');
   btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));

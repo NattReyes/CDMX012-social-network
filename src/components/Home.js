@@ -28,17 +28,20 @@ export const Home = () => {
 
     `;
 
-    const divHome = document.createElement('div');
+    const divHome = document.createElement("div");
     divHome.innerHTML = htmlBase;
 
-    const btnExistingUser = divHome.querySelector('#buttonExistingUser');
-    btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));
+    // Botón para iniciar con usuario existente
+    const btnExistingUser = divHome.querySelector("#buttonExistingUser");
+        btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
 
-    const btnExistingGoogle = divHome.querySelector('#buttonExistingGoogle');
-    btnExistingGoogle.addEventListener('click', () => onNavigate('/login'));
+    // Botón para iniciar con cuenta de Google vinculada
+    const btnExistingGoogle = divHome.querySelector("#buttonExistingGoogle");
+        btnExistingGoogle.addEventListener("click", () => onNavigate("/login"));
 
-    const btnRegister = divHome.querySelector('#registerButton');
-    btnRegister.addEventListener('click', () => onNavigate('/register'));
+    // Botón para registrar nuevo usuario
+    const btnRegister = divHome.querySelector("#registerButton");
+        btnRegister.addEventListener("click", () => onNavigate("/register"));
 
 
     return divHome;
