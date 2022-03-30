@@ -1,9 +1,3 @@
-// Este es el punto de entrada de tu aplicacion
-
-//import { myFunction } from './lib/index.js';
-
-//myFunction();
-
 /* eslint-disable import/no-cycle */
 import { Home } from './components/Home.js';
 import { UserLogin } from './components/UserLogin.js';
