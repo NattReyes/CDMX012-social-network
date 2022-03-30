@@ -50,6 +50,7 @@ export const Register = () => {
     // Botón para enviar datos de registro
     const registerButtonAlert = divRegister.querySelector("#registerButton");
     registerButtonAlert.addEventListener("click", () => {
+        
         alert("hola");
       });
     

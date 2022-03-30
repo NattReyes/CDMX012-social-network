@@ -36,7 +36,7 @@ export const CreatePost = () => {
     const buttonReturnWall = divCreatePost.querySelector("#returnButton");
         buttonReturnWall.addEventListener("click", (e) => {
         e.preventDefault();
-        onNavigate("/wall");
+        onNavigate("/dashboard");
         });
 
     return divCreatePost;
