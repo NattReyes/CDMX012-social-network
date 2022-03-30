@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
-import { onNavigate } from '../main.js';
+// import { onNavigate } from '../main.js';
 
 export const UserLogin = () => {
-    const htmlUserLogin = `
+  const htmlUserLogin = `
         <div class="userLoginPage">
             <div class="headParagraphDiv">
                 <p class="headParagraph">
@@ -38,11 +38,11 @@ export const UserLogin = () => {
 
     `;
 
-    const divUserLogin = document.createElement("div");
-    divUserLogin.innerHTML = htmlUserLogin;
+  const divUserLogin = document.createElement("div");
+  divUserLogin.innerHTML = htmlUserLogin;
 
-    const btnRegister = divUserLogin.querySelector("#registerButton");
-    btnRegister.addEventListener("click", () => onNavigate("/register"));
+  const btnRegister = divUserLogin.querySelector("#registerButton");
+  btnRegister.addEventListener("click", () => onNavigate("/register"));
 
-    return divUserLogin;
+  return divUserLogin;
 };

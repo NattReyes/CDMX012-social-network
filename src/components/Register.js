@@ -1,8 +1,10 @@
+/* eslint-disable import/no-cycle */
+import { createUser } from '../lib/authUser.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
 export const Register = () => {
-    const htmlRegister = `
+  const htmlRegister = `
     <div id="register-page">
         <div class="headParagraphDiv">
             <p class="headParagraph">
@@ -31,7 +33,9 @@ export const Register = () => {
             </div>
             <br>
             <p id="error-message-register"></p>
+
             <button id="registerButton" class="submitButton">Registrarse</button>
+
         </form>
         
         <div class="diffStep">
@@ -44,32 +48,39 @@ export const Register = () => {
 
     `;
 
-    const divRegister = document.createElement("div");
-    divRegister.innerHTML = htmlRegister;
 
-    // Botón para enviar datos de registro
-    const registerButtonAlert = divRegister.querySelector("#registerButton");
-    registerButtonAlert.addEventListener("click", () => {
-        
-        alert("hola");
-      });
+  const divRegister = document.createElement('div');
+  divRegister.innerHTML = htmlRegister;
+
+  // Botón para enviar datos de registro
+  const registerButtonAlert = divRegister.querySelector('#registerButton');
+  registerButtonAlert.addEventListener('click', (e) => {
+    e.preventDefault();
+    const userMail = divRegister.querySelector('#user-email').value;
+    const userPassword = divRegister.querySelector('#user-password').value;
+    console.log(userMail, userPassword);
+    createUser(userMail, userPassword);
+  });
     
-    // Botón para volver a inicio de sesión
-    const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
-    btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
+   // Botón para volver a inicio de sesión
+   const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
+   btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
 
 
-//   const RegisterDiv = document.createElement('div');
-//   const nodoH2 = document.createElement('h2');
-//   const buttonHome = document.createElement('button');
+  const btnExistingUser = divRegister.querySelector('#buttonExistingUser');
+  btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));
 
-//   buttonHome.textContent = 'Return Home';
-//   buttonHome.addEventListener('click', () => {
-//     onNavigate('/');
-//   });
+  //   const RegisterDiv = document.createElement('div');
+  //   const nodoH2 = document.createElement('h2');
+  //   const buttonHome = document.createElement('button');
 
-//   nodoH2.textContent = 'Welcome to register';
+  //   buttonHome.textContent = 'Return Home';
+  //   buttonHome.addEventListener('click', () => {
+  //     onNavigate('/');
+  //   });
 
-//   RegisterDiv.append(nodoH2, buttonHome);
-return divRegister;
+  //   nodoH2.textContent = 'Welcome to register';
+
+  //   RegisterDiv.append(nodoH2, buttonHome);
+  return divRegister;
 };
