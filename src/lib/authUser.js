@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
@@ -38,5 +38,35 @@ export function createUser(email, password) {
       if (errorCode === 'auth/invalid-email') {
         alert('Por favor ingresa un correo válido');
       }
+      if (errorCode === 'auth/weak-password') {
+        alert('Tu contraseña debe contener al menos 6 carácteres.');
+      }
+      if (errorCode === 'auth/email-already-in-use') {
+        alert('Ya existe una cuenta con este correo, intenta con uno nuevo o Inicia Sesión');
+      }
     });
 }
+
+export const signIn = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      console.log('¡Login!');
+      const user = userCredential.user;
+      alert('Login exitoso!');
+      onNavigate('/Dashboard');
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === 'auth/wrong-password') {
+        alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olivde mi contraseña"');
+      }
+      if (errorCode === 'auth/invalid-email') {
+        alert('Por favor ingresa un correo válido');
+      }
+      if (errorCode === 'auth/user-not-found') {
+        alert('Tu correo aún no ha sido registrado');
+      }
+    });
+};
