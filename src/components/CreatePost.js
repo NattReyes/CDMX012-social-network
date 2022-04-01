@@ -2,7 +2,7 @@
 import { onNavigate } from '../main.js';
 
 export const CreatePost = () => {
-    const htmlCreatePost = `
+  const htmlCreatePost = `
     <header>
     </header>
 
@@ -26,18 +26,17 @@ export const CreatePost = () => {
 
     `;
 
-    const divCreatePost = document.createElement("div");
-        divCreatePost.innerHTML = htmlCreatePost;
+  const divCreatePost = document.createElement('div');
+  divCreatePost.innerHTML = htmlCreatePost;
 
-    // Botón para publicar post
+  // Botón para publicar post
 
+  // Botón para volver a muro
+  const buttonReturnWall = divCreatePost.querySelector('#returnButton');
+  buttonReturnWall.addEventListener('click', (e) => {
+    e.preventDefault();
+    onNavigate('/dashboard');
+  });
 
-    // Botón para volver a muro
-    const buttonReturnWall = divCreatePost.querySelector("#returnButton");
-        buttonReturnWall.addEventListener("click", (e) => {
-        e.preventDefault();
-        onNavigate("/dashboard");
-        });
-
-    return divCreatePost;
+  return divCreatePost;
 };
