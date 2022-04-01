@@ -66,10 +66,6 @@ export const Register = () => {
    const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
    btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
 
-
-  const btnExistingUser = divRegister.querySelector('#buttonExistingUser');
-  btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));
-
   //   const RegisterDiv = document.createElement('div');
   //   const nodoH2 = document.createElement('h2');
   //   const buttonHome = document.createElement('button');
