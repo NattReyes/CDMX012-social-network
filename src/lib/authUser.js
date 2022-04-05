@@ -54,19 +54,21 @@ export const signIn = (email, password) => {
       console.log('¡Login!');
       const user = userCredential.user;
       alert('Login exitoso!');
-      onNavigate('/Dashboard');
+      onNavigate('/dashboard');
       // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/wrong-password') {
-        alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olivde mi contraseña"');
-      }
-      if (errorCode === 'auth/invalid-email') {
-        alert('Por favor ingresa un correo válido');
-      }
-      if (errorCode === 'auth/user-not-found') {
-        alert('Tu correo aún no ha sido registrado');
-      }
     });
+
+
+    // .catch((error) => {
+    //   const errorCode = error.code;
+    //   if (errorCode === 'auth/wrong-password') {
+    //     alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olvidé mi contraseña"');
+    //   }
+    //   if (errorCode === 'auth/invalid-email') {
+    //     alert('Por favor ingresa un correo válido');
+    //   }
+    //   if (errorCode === 'auth/user-not-found') {
+    //     alert('Tu correo aún no ha sido registrado');
+    //   }
+    // });
 };

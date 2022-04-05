@@ -1,3 +1,6 @@
+// Queda como página provisional en caso de extender objetivos de aprendizaje
+
+
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
 

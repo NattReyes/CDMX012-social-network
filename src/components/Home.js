@@ -16,6 +16,8 @@ export const Home = () => {
         <div class="existingAccountButtons">
             <button class="mainButton" id="buttonExistingUser">Iniciar con usuario</button>
             <button class="secondButton" id="buttonExistingGoogle">Iniciar con Google</button>
+            <button class="secondButton" id="buttonExistingTwitter">Iniciar con Twitter</button>
+            <button class="secondButton" id="buttonExistingGitHub">Iniciar con GitHub</button>
         </div>
 
         <div class="diffStep">
@@ -24,6 +26,7 @@ export const Home = () => {
             </p>
             <button class="diffStepButton" id="registerButton">Regístrate</button>
         </div>
+
     </div>
 
     `;
@@ -35,9 +38,17 @@ export const Home = () => {
     const btnExistingUser = divHome.querySelector("#buttonExistingUser");
         btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
 
-    // Botón para iniciar con cuenta de Google vinculada
+    // Botón para iniciar con cuenta de Google
     const btnExistingGoogle = divHome.querySelector("#buttonExistingGoogle");
         btnExistingGoogle.addEventListener("click", () => onNavigate("/login"));
+
+    // Botón para iniciar con cuenta de Twitter
+    const btnExistingTwitter = divHome.querySelector("#buttonExistingTwitter");
+        btnExistingTwitter.addEventListener("click", () => onNavigate("/login"));
+
+    // Botón para iniciar con cuenta de GitHub
+    const btnExistingGitHub = divHome.querySelector("#buttonExistingGitHub");
+        btnExistingGitHub.addEventListener("click", () => onNavigate("/login"));
 
     // Botón para registrar nuevo usuario
     const btnRegister = divHome.querySelector("#registerButton");
