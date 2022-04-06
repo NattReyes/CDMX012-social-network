@@ -1,0 +1,112 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-family: 'DM Sans';
+    color: white;
+    text-align: center;
+    background-image: url("Fondo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 1800px;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.glass {
+    margin-top: 6%;
+    padding-top: 10%;
+    padding-bottom: 20%;
+    position: center;
+    height: 30%;
+    width: 90%;
+    position: absolute;
+    margin-left: 5%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4.0px);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mainButton {
+    margin-bottom: 20px;
+    padding: 2%;
+    width: 90%;
+    font-family: 'DM Sans';
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    background-image: linear-gradient(to left, rgba(164, 34, 208), rgba(249, 86, 153));
+    font-family: "Open Sans Regular";
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.secondButton {
+    margin-bottom: 20px;
+    padding: 2%;
+    width: 90%;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    background: white;
+    color: rgba(45, 26, 85);
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.headParagraph {
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+#login-email {
+    background: transparent;
+    border-color: white;
+    padding: 2%;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.userLoginPage {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    position: center;
+    height: 70%;
+    width: 90%;
+    position: absolute;
+    margin-left: 5%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4.0px);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+
+#login-password {
+    background: transparent;
+    border-color: white;
+    padding: 2%;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+::placeholder {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
