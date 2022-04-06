@@ -1,7 +1,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+  getRedirectResult,
+  GithubAuthProvider,
+// eslint-disable-next-line import/no-unresolved
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
@@ -58,17 +66,42 @@ export const signIn = (email, password) => {
       // ...
     });
 
+  // .catch((error) => {
+  //   const errorCode = error.code;
+  //   if (errorCode === 'auth/wrong-password') {
+  //    alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olvidé mi contraseña"');
+  //   }
+  //   if (errorCode === 'auth/invalid-email') {
+  //     alert('Por favor ingresa un correo válido');
+  //   }
+  //   if (errorCode === 'auth/user-not-found') {
+  //     alert('Tu correo aún no ha sido registrado');
+  //   }
+  // });
+};
 
-    // .catch((error) => {
-    //   const errorCode = error.code;
-    //   if (errorCode === 'auth/wrong-password') {
-    //     alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olvidé mi contraseña"');
-    //   }
-    //   if (errorCode === 'auth/invalid-email') {
-    //     alert('Por favor ingresa un correo válido');
-    //   }
-    //   if (errorCode === 'auth/user-not-found') {
-    //     alert('Tu correo aún no ha sido registrado');
-    //   }
-    // });
+export const loginGithub = () => {
+  const provider = new GithubAuthProvider();
+  signInWithRedirect(auth, provider);
+  getRedirectResult(auth)
+    .then((result) => {
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      if (credential) {
+      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const token = credential.accessToken;
+      // ...
+      }
+
+      // The signed-in user info.
+      const user = result.user;
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GithubAuthProvider.credentialFromError(error);
+    // ...
+    });
 };
