@@ -1,10 +1,10 @@
-// 
+//
 
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
 
 export const Dashboard = () => {
-    const htmlDashboard = `
+  const htmlDashboard = `
 
     <div class="provisionalDashboard">
         <form class="postForm" id="postCreatorForm">
@@ -20,11 +20,11 @@ export const Dashboard = () => {
 
     `;
 
-    const divDashboard = document.createElement("div");
-        divDashboard.innerHTML = htmlDashboard;
+  const divDashboard = document.createElement('div');
+  divDashboard.innerHTML = htmlDashboard;
 
-        // const btnNewPost = divDashboard.querySelector("#buttonCreatePost");
-        // btnNewPost.addEventListener("click", () => onNavigate("/createPost"));
+  // const btnNewPost = divDashboard.querySelector("#buttonCreatePost");
+  // btnNewPost.addEventListener("click", () => onNavigate("/createPost"));
 
-        return divDashboard;
-    };
+  return divDashboard;
+};
