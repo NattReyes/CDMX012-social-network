@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
@@ -23,6 +23,7 @@ const app = initializeApp(firebaseConfig);
 // la vamos a exportar y se va a ejecuar en ele compoenente correspondiente
 // Init firebase app
 const auth = getAuth(app);
+  
 export function createUser(email, password) {
   createUserWithEmailAndPassword(auth, email, password) // Crea el usuario
     .then((userCredential) => {
@@ -57,7 +58,31 @@ export const signIn = (email, password) => {
       onNavigate('/dashboard');
       // ...
     });
+  };
 
+export const signInGoogle = () => {
+  const provider = new GoogleAuthProvider;
+  signInWithRedirect(auth, provider);
+  
+  getRedirectResult(auth)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+
+    // The signed-in user info.
+    const user = result.user;
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+  };
 
     // .catch((error) => {
     //   const errorCode = error.code;
@@ -71,4 +96,4 @@ export const signIn = (email, password) => {
     //     alert('Tu correo aún no ha sido registrado');
     //   }
     // });
-};
+

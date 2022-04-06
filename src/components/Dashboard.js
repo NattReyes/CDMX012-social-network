@@ -15,6 +15,7 @@ export const Dashboard = () => {
         </form>
         
         <div class="dashboardPosts">
+        <p> Acá van a salir los posts xD </p>
         </div>
     </div>
 
