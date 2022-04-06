@@ -49,13 +49,13 @@ export const UserLogin = () => {
     const userPassword = divUserLogin.querySelector('#login-password').value;
     console.log(userMail, userPassword);
     signIn(userMail, userPassword);
-    onNavigate('/CreatePost');
+    onNavigate('/dashboard');
   });
 
   const btnRegister = divUserLogin.querySelector('#registerButton');
-  btnRegister.addEventListener('click', (e) => {
-  e.preventDefault();
-  onNavigate('/CreatePost');
+    btnRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    onNavigate('/register');
   });
   return divUserLogin;
 };

@@ -63,7 +63,7 @@ export const Register = () => {
 
   // Botón para volver a inicio de sesión
   const btnExistingUser = divRegister.querySelector('#buttonExistingUser');
-  btnExistingUser.addEventListener('click', () => onNavigate('/CreatePost'));
+  btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));
 
   //   const RegisterDiv = document.createElement('div');
   //   const nodoH2 = document.createElement('h2');
