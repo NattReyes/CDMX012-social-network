@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
-// import { onNavigate } from '../main.js';
+import { onNavigate } from '../main.js';
+import { signIn } from '../lib/authUser.js';
 
 export const UserLogin = () => {
     const htmlUserLogin = `
@@ -36,11 +37,25 @@ export const UserLogin = () => {
 
 `;
 
-    const divUserLogin = document.createElement("div");
-    divUserLogin.innerHTML = htmlUserLogin;
 
-    const btnRegister = divUserLogin.querySelector("#registerButton");
-    btnRegister.addEventListener("click", () => onNavigate("/register"));
+  const divUserLogin = document.createElement('div');
+  divUserLogin.innerHTML = htmlUserLogin;
 
-    return divUserLogin;
+  const buttonLogin = divUserLogin.querySelector('#form-button-login');
+  buttonLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    const userMail = divUserLogin.querySelector('#login-email').value;
+    const userPassword = divUserLogin.querySelector('#login-password').value;
+    console.log(userMail, userPassword);
+    signIn(userMail, userPassword);
+    onNavigate('/dashboard');
+  });
+
+  const btnRegister = divUserLogin.querySelector('#registerButton');
+    btnRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    onNavigate('/register');
+  });
+  return divUserLogin;
+
 };

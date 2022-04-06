@@ -46,6 +46,7 @@ export const Register = () => {
 
 `;
 
+
   const divRegister = document.createElement('div');
   divRegister.innerHTML = htmlRegister;
 
@@ -58,6 +59,7 @@ export const Register = () => {
     console.log(userMail, userPassword);
     createUser(userMail, userPassword);
   });
+
 
   // Botón para volver a inicio de sesión
   const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
