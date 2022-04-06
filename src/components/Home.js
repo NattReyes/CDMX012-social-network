@@ -45,10 +45,10 @@ export const Home = () => {
   const btnExistingUser = divHome.querySelector('#buttonExistingUser');
   btnExistingUser.addEventListener('click', () => onNavigate('/userLogin'));
 
-    // Botón para iniciar con cuenta de Google
-    const btnExistingGoogle = divHome.querySelector("#buttonExistingGoogle");
+  // Botón para iniciar con cuenta de Google
+  const btnExistingGoogle = divHome.querySelector("#buttonExistingGoogle");
         btnExistingGoogle.addEventListener("click", (e) => {
-        signInGoogle ( );
+        signInGoogle ();
         onNavigate("/dashboard");
     });
 
