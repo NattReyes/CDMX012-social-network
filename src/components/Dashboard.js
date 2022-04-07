@@ -1,7 +1,8 @@
 //
-
 /* eslint-disable import/no-cycle */
-import { onNavigate } from '../main.js';
+// import { onNavigate } from '../main.js';
+
+import { savePost, readData } from '../lib/index.js';
 
 export const Dashboard = () => {
   const htmlDashboard = `
@@ -24,8 +25,13 @@ export const Dashboard = () => {
   const divDashboard = document.createElement('div');
   divDashboard.innerHTML = htmlDashboard;
 
-  // const btnNewPost = divDashboard.querySelector("#buttonCreatePost");
-  // btnNewPost.addEventListener("click", () => onNavigate("/createPost"));
-
+  const btnNewPost = divDashboard.querySelector('#buttonCreatePost');
+  btnNewPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    const inputPost = document.getElementById('productReview').value;
+    console.log(inputPost);
+    savePost(inputPost);
+  });
+  console.log(readData());
   return divDashboard;
 };

@@ -24,7 +24,7 @@ const firebaseConfig = {
   measurementId: 'G-L85FK2VG4E',
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 // traernos inizialice
 // importar nuestros elementos de firebase igual que inicielize
@@ -32,7 +32,7 @@ const app = initializeApp(firebaseConfig);
 // la vamos a exportar y se va a ejecuar en ele compoenente correspondiente
 // Init firebase app
 const auth = getAuth(app);
-  
+
 export function createUser(email, password) {
   createUserWithEmailAndPassword(auth, email, password) // Crea el usuario
     .then((userCredential) => {
@@ -67,44 +67,44 @@ export const signIn = (email, password) => {
       onNavigate('/dashboard');
       // ...
     });
-  };
+};
 
 export const signInGoogle = () => {
-  const provider = new GoogleAuthProvider;
+  const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider);
-  
+
   getRedirectResult(auth)
-  .then((result) => {
+    .then((result) => {
     // This gives you a Google Access Token. You can use it to access Google APIs.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
 
-    // The signed-in user info.
-    const user = result.user;
-  }).catch((error) => {
+      // The signed-in user info.
+      const user = result.user;
+    }).catch((error) => {
     // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
-  });
-  };
+    });
+};
 
-    // .catch((error) => {
-    //   const errorCode = error.code;
-    //   if (errorCode === 'auth/wrong-password') {
-    //     alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olvidé mi contraseña"');
-    //   }
-    //   if (errorCode === 'auth/invalid-email') {
-    //     alert('Por favor ingresa un correo válido');
-    //   }
-    //   if (errorCode === 'auth/user-not-found') {
-    //     alert('Tu correo aún no ha sido registrado');
-    //   }
-    // });
+// .catch((error) => {
+//   const errorCode = error.code;
+//   if (errorCode === 'auth/wrong-password') {
+//     alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olvidé mi contraseña"');
+//   }
+//   if (errorCode === 'auth/invalid-email') {
+//     alert('Por favor ingresa un correo válido');
+//   }
+//   if (errorCode === 'auth/user-not-found') {
+//     alert('Tu correo aún no ha sido registrado');
+//   }
+// });
 
 export const loginGithub = () => {
   const provider = new GithubAuthProvider();
