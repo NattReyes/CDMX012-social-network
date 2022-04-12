@@ -1,8 +1,5 @@
-//
-/* eslint-disable import/no-cycle */
-// import { onNavigate } from '../main.js';
 
-import { savePost, readData } from '../lib/index.js';
+import { savePost, allPosts } from '../lib/index.js';
 
 export const Dashboard = () => {
   const htmlDashboard = `
@@ -15,8 +12,8 @@ export const Dashboard = () => {
             <button type="submit" class="mainButton" id="buttonCreatePost">Publicar</button>
         </form>
         
-        <div class="dashboardPosts">
-        <p> Acá van a salir los posts xD </p>
+        <div class="posts-container" id="postsContainer">
+ 
         </div>
     </div>
 
@@ -29,9 +26,54 @@ export const Dashboard = () => {
   btnNewPost.addEventListener('click', (e) => {
     e.preventDefault();
     const inputPost = document.getElementById('productReview').value;
-    console.log(inputPost);
     savePost(inputPost);
   });
-  console.log(readData());
+
+  const dashboardPosts = divDashboard.querySelector("#postsContainer");
+
+
+  const feedPosts = [];
+  // const data=allPosts()
+  // onSnapshot(data,(post)=>{
+  //   post.forEach((doc) => {
+    allPosts.forEach((doc) => {
+      feedPosts.push({ id: doc.id, infopost: doc.data() });
+  
+      let user = doc.id;
+      let post = doc.data().post;
+  
+      dashboardPosts.innerHTML += `
+        <div class="div-post">
+          <section class="postHead">
+            <div class="userDetail">
+              <p id="userID">${user}</p>
+            </div>
+            <div>
+              <button id="editButton">Editar</button>
+            </div>  
+          </section>
+          <section class="postBody">
+            <div>
+              <p id="postContent">${post}</p>
+            </div>
+          </section>
+          <section class="postFooter">
+             <div>
+              <p id="likesCounter">aquivanloslikes</p>
+              <button id="likeButton">imglike</button>
+              <button id="deleteButton">imgbotedebasura</button>
+            </div>
+          </section>
+        </div>
+          `;
+    
+    });
+  
+  // })
+  
+
+// });
+// console.log("all posts ",feedPosts)
   return divDashboard;
+
 };

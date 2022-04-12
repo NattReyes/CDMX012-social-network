@@ -110,3 +110,8 @@ html {
     color: white;
     font-family: 'Open Sans', sans-serif;
 }
+
+/* CSS provisional, solo para ubicar los divs */
+.div-post{
+    background-color: rgb(124, 114, 216);
+}

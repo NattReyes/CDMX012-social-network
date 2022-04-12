@@ -10,6 +10,8 @@ import { app } from './authUser.js';
 
 const db = getFirestore(app);
 
+// Obtención de datos de post
+
 export const savePost = async (inputPost) => {
   const docRef = await addDoc(collection(db, 'post'), {
     post: inputPost,
@@ -21,6 +23,15 @@ export const readData = async () => {
   const querySnapshot = await getDocs(collection(db, 'post'));
   querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
+    console.log(doc.id, ' => ', doc.data())," from index.js";
   });
 };
+
+// Llenar DOM con posts
+
+
+
+export const allPosts = await getDocs(collection(db, 'post'));
+console.log("Posts data!!!!", allPosts);
+
+
