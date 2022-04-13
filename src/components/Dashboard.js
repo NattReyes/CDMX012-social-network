@@ -1,5 +1,9 @@
 
-import { savePost, allPosts } from '../lib/index.js';
+import { savePost, postCollection } from '../lib/index.js';
+import { onSnapshot,
+// eslint-disable-next-line import/no-unresolved
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+// eslint-disable-next-line import/no-cycle
 
 export const Dashboard = () => {
   const htmlDashboard = `
@@ -31,17 +35,18 @@ export const Dashboard = () => {
 
   const dashboardPosts = divDashboard.querySelector("#postsContainer");
 
+  onSnapshot(postCollection, (querySnapshot) => {
+    console.log("Kesestawea??", querySnapshot);
+    let feedPosts = [];
+    if (querySnapshot.metadata.hasPendingWrites === false) {
+      dashboardPosts.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        feedPosts.push({ id: doc.id, infopost: doc.data().post });
 
-  const feedPosts = [];
-  // const data=allPosts()
-  // onSnapshot(data,(post)=>{
-  //   post.forEach((doc) => {
-    allPosts.forEach((doc) => {
-      feedPosts.push({ id: doc.id, infopost: doc.data() });
-  
-      let user = doc.id;
-      let post = doc.data().post;
-  
+        let user = doc.id;
+        let post = doc.data().post;
+          console.log("Esta otra wea:::", doc.data());
+
       dashboardPosts.innerHTML += `
         <div class="div-post">
           <section class="postHead">
@@ -66,14 +71,11 @@ export const Dashboard = () => {
           </section>
         </div>
           `;
-    
-    });
-  
-  // })
-  
+      });
+    };
+  });
 
-// });
-// console.log("all posts ",feedPosts)
+  
   return divDashboard;
 
 };

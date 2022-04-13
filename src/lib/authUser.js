@@ -31,7 +31,7 @@ export const app = initializeApp(firebaseConfig);
 // crear una funcion llamada createUserwithEmain() espera 2 paramentros email y pass
 // la vamos a exportar y se va a ejecuar en ele compoenente correspondiente
 // Init firebase app
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Creación de usuario
 
