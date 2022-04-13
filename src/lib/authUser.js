@@ -31,7 +31,9 @@ export const app = initializeApp(firebaseConfig);
 // crear una funcion llamada createUserwithEmain() espera 2 paramentros email y pass
 // la vamos a exportar y se va a ejecuar en ele compoenente correspondiente
 // Init firebase app
-const auth = getAuth(app);
+export const auth = getAuth(app);
+
+// Creación de usuario
 
 export function createUser(email, password) {
   createUserWithEmailAndPassword(auth, email, password) // Crea el usuario
@@ -55,7 +57,9 @@ export function createUser(email, password) {
         alert('Ya existe una cuenta con este correo, intenta con uno nuevo o Inicia Sesión');
       }
     });
-}
+};
+
+// Inicio de sesión
 
 export const signIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
@@ -68,6 +72,8 @@ export const signIn = (email, password) => {
       // ...
     });
 };
+
+// Inicio de sesión con Google
 
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -105,6 +111,8 @@ export const signInGoogle = () => {
 //     alert('Tu correo aún no ha sido registrado');
 //   }
 // });
+
+// Inicio de sesión con GitHub
 
 export const loginGithub = () => {
   const provider = new GithubAuthProvider();

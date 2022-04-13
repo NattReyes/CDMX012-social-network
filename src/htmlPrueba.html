@@ -1,22 +1,39 @@
 <!-- Archivo HTML de prueba para generar código de pantallas y así -->
 
-<header>
-</header>
 
-<div class="postCreator">
-    <form class="postForm" id="postCreatorForm">
-        <h2 class="postTitles"> Creador de publicación </h2>
-        <label for="productPostName">¿Qué producto probaste?</label>
-        <textarea required id="productName" name="textarea" rows="2" cols="40" autofocus></textarea>
-        <label for="productPostRate">¿Qué calificación le das?</label>
-        <textarea required id="productRate" name="textarea" rows="1" cols="40" placeholder="10 / 10"
-            autofocus></textarea>
-        <label for="productPostReview">¿Cómo fue tu experiencia?</label>
-        <textarea required id="productReview" name="textarea" rows="10" cols="40" autofocus></textarea>
+    <div class="div-post">
+        <section class="postHead">
+            <div class="userDetail">
+                <p id="userID"></p>
+            </div>
+            <div>
+                <button id="editButton">Editar</button>
+            </div>
+        </section>
+        <section class="postBody">
+            <div>
+                <p id="postContent"></p>
+            </div>
+        </section>
+        <section class="postFooter">
+            <div>
+                <p id="likesCounter">aquivanloslikes</p>
+                <button id="likeButton">imglike</button>
+                <button id="deleteButton">imgbotedebasura</button>
+            </div>
+        </section>
+    </div>
 
-        <button type="submit" class="mainButton" id="buttonCreatePost">Publicar</button>
-        <button class="secondButton" id="returnButton">Regresar</button>
-
-    </form>
-    <div id="postPreview"></div>
-</div>
+    <!-- <h3>${user}</h3> 
+    <span class="date-public">${datePublic}</span>
+    <h4>Temática: ${topic}</h4>
+     <p>${idea}</p>
+     <div class= "div-editPost">
+     <img class="like count-likes" src="img/likes.png" alt="like" data-id="${id}"><span class="like-counter"><span class="me-encorazona">${likesEmail} </span>Me Encorazona</span>
+     <img class ='btn-delete btn-wall-movil' id="${user}" data-id="${id}" src="img/bote-de-basura.png">
+     <button class ='btn-delete btn-wall' id="${user}" data-id="${id}" >Eliminar</button>
+     <img class ='btn-edit btn-wall-movil' id="${user}"  data-id="${id}" src="img/lapiz.png">
+     <button class ='btn-edit btn-wall' id="${user}"  data-id="${id}">Editar</button>
+     </div> -->
+     </div>
+    
