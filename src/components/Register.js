@@ -3,6 +3,7 @@ import { createUser } from '../lib/authUser.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
+// Register base
 export const Register = () => {
   const htmlRegister = `
   <div id="register-page">
@@ -65,18 +66,6 @@ export const Register = () => {
   const btnExistingUser = divRegister.querySelector("#buttonExistingUser");
   btnExistingUser.addEventListener("click", () => onNavigate("/userLogin"));
 
-
-  //   const RegisterDiv = document.createElement('div');
-  //   const nodoH2 = document.createElement('h2');
-  //   const buttonHome = document.createElement('button');
-
-  //   buttonHome.textContent = 'Return Home';
-  //   buttonHome.addEventListener('click', () => {
-  //     onNavigate('/');
-  //   });
-
-  //   nodoH2.textContent = 'Welcome to register';
-
-  //   RegisterDiv.append(nodoH2, buttonHome);
+  
   return divRegister;
 };

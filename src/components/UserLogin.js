@@ -2,6 +2,7 @@
 import { onNavigate } from '../main.js';
 import { signIn } from '../lib/authUser.js';
 
+// Login base
 export const UserLogin = () => {
     const htmlUserLogin = `
   <div class="userLoginPage">
@@ -41,6 +42,7 @@ export const UserLogin = () => {
   const divUserLogin = document.createElement('div');
   divUserLogin.innerHTML = htmlUserLogin;
 
+  // Botón para inicio de sesión con usuario
   const buttonLogin = divUserLogin.querySelector('#form-button-login');
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
@@ -51,6 +53,7 @@ export const UserLogin = () => {
     onNavigate('/dashboard');
   });
 
+  // Botón para volver a registro
   const btnRegister = divUserLogin.querySelector('#registerButton');
     btnRegister.addEventListener('click', (e) => {
     e.preventDefault();

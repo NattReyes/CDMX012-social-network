@@ -14,6 +14,7 @@ import {
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyCfOwCLEL8J_PhN7mbExoCHRdkhG7J2XwU',
   authDomain: 'probando-ando-6ad59.firebaseapp.com',
@@ -24,17 +25,20 @@ const firebaseConfig = {
   measurementId: 'G-L85FK2VG4E',
 };
 
-export const app = initializeApp(firebaseConfig);
 
 // traernos inizialice
 // importar nuestros elementos de firebase igual que inicielize
 // crear una funcion llamada createUserwithEmain() espera 2 paramentros email y pass
 // la vamos a exportar y se va a ejecuar en ele compoenente correspondiente
 // Init firebase app
+
+
+// Variables a exportar
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+//export const currentUser = auth.currentUser;
 
 // Creación de usuario
-
 export function createUser(email, password) {
   createUserWithEmailAndPassword(auth, email, password) // Crea el usuario
     .then((userCredential) => {
@@ -60,7 +64,6 @@ export function createUser(email, password) {
 };
 
 // Inicio de sesión
-
 export const signIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -74,7 +77,6 @@ export const signIn = (email, password) => {
 };
 
 // Inicio de sesión con Google
-
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider);
@@ -112,8 +114,8 @@ export const signInGoogle = () => {
 //   }
 // });
 
-// Inicio de sesión con GitHub
 
+// Inicio de sesión con GitHub
 export const loginGithub = () => {
   const provider = new GithubAuthProvider();
   signInWithRedirect(auth, provider);

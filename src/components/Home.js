@@ -3,6 +3,7 @@ import { loginGithub } from '../lib/authUser.js';
 import { onNavigate } from '../main.js';
 import { signInGoogle } from "../lib/authUser.js";
 
+// Pantalla Home base
 export const Home = () => {
   const htmlBase = `
     <header>
@@ -69,20 +70,6 @@ export const Home = () => {
 
   return divHome;
 
-    //   const HomeDiv = document.createElement('div');
-    //   const nodoH1 = document.createElement('h1');
-    //   const buttonExistingUser = document.createElement('button');
-    //   const buttonExistingGoogle = document.createElement('button');
-
-    //   buttonExistingUser.textContent = "Iniciar con usuario";
-    // //   buttonRegister.addEventListener('click', () => {
-    // //     onNavigate('/register');
-    // //   });
-    //   buttonExistingGoogle.textContent = "Iniciar con Google";
-
-    //   nodoH1.textContent = 'Welcome my social network';
-    //   HomeDiv.append(nodoH1, buttonExistingUser, buttonExistingGoogle);
-    //   return HomeDiv;
 };
 
 
