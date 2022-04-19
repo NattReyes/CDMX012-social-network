@@ -1,5 +1,5 @@
 
-import { savePost, postCollection, likes, getUserLogged } from '../lib/index.js';
+import { savePost, postCollection, likes, getUserLogged, deletePost } from '../lib/index.js';
 import { onSnapshot, 
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
@@ -50,7 +50,7 @@ export const Dashboard = () => {
 // console.log("Obteniendo usuario >>>", auth.currentUser.email);
 
         let user = doc.data().email;
-        let post = doc.data().post; 
+        let post = doc.data().post;
 
       dashboardPosts.innerHTML += `
         <div class="div-post">
@@ -71,13 +71,21 @@ export const Dashboard = () => {
              <div>
               <p id="likesCounter">aquivanloslikes</p>
               <button id="likeButton">imglike</button>
-              <button id="deleteButton" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">imgbotedebasura</button>
+              <button class="deleteButton" value="${doc.id}" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">imgbotedebasura</button>
             </div>
           </section>
         </div>
           `;
+          const btnDeletePost = dashboardPosts.querySelectorAll('.deleteButton');
+          btnDeletePost.forEach((btn) => {
+            // eslint-disable-next-line func-names
+            btn.addEventListener('click', () => {
+              deletePost(btn.value);
+              console.log(btn.value);
+            });
+		 });
       });
-    };
+    }
   });
 
   // Botón para dar like a post

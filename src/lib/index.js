@@ -7,6 +7,8 @@ import {
   orderBy,
   query,
   arrayUnion,
+  doc,
+  deleteDoc,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 // eslint-disable-next-line import/no-cycle
@@ -41,3 +43,4 @@ export const getUserLogged = () => {
   const user = auth.currentUser;
   return user;
 };
+export const deletePost = async (id) => await deleteDoc(doc(db, 'posts', id))
