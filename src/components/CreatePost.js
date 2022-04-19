@@ -1,6 +1,9 @@
-// Queda como página provisional en caso de extender objetivos de aprendizaje
+////////////////////////////////////////////////////////////////////////////////
+// Queda como página provisional en caso de extender objetivos de aprendizaje //
+////////////////////////////////////////////////////////////////////////////////
 
 /* eslint-disable import/no-cycle */
+import { savePost } from '../lib/index.js';
 import { onNavigate } from '../main.js';
 
 export const CreatePost = () => {
@@ -32,6 +35,12 @@ export const CreatePost = () => {
   divCreatePost.innerHTML = htmlCreatePost;
 
   // Botón para publicar post
+  const btnNewPost = divCreatePost.querySelector('#buttonCreatePost');
+  btnNewPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    const inputPost = document.getElementById('productReview').value;
+    savePost(inputPost);
+  });
 
   // Botón para volver a muro
   const buttonReturnWall = divCreatePost.querySelector('#returnButton');

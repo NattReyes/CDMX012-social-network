@@ -1,10 +1,12 @@
 
-import { savePost, postCollection } from '../lib/index.js';
-import { onSnapshot,
+import { savePost, postCollection, likes, getUserLogged } from '../lib/index.js';
+import { onSnapshot, 
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 // eslint-disable-next-line import/no-cycle
+import { auth } from '../lib/authUser.js';
 
+// Dashboard base
 export const Dashboard = () => {
   const htmlDashboard = `
 
@@ -26,6 +28,7 @@ export const Dashboard = () => {
   const divDashboard = document.createElement('div');
   divDashboard.innerHTML = htmlDashboard;
 
+  // Botón para publicar post
   const btnNewPost = divDashboard.querySelector('#buttonCreatePost');
   btnNewPost.addEventListener('click', (e) => {
     e.preventDefault();
@@ -33,19 +36,21 @@ export const Dashboard = () => {
     savePost(inputPost);
   });
 
+  // Feed de posts en pantalla Dashboard
   const dashboardPosts = divDashboard.querySelector("#postsContainer");
-
   onSnapshot(postCollection, (querySnapshot) => {
-    console.log("Kesestawea??", querySnapshot);
+    
     let feedPosts = [];
     if (querySnapshot.metadata.hasPendingWrites === false) {
       dashboardPosts.innerHTML = "";
       querySnapshot.forEach((doc) => {
         feedPosts.push({ id: doc.id, infopost: doc.data().post });
 
-        let user = doc.id;
-        let post = doc.data().post;
-          console.log("Esta otra wea:::", doc.data());
+// console.log("obteniendo email en doc >>>", doc.data().email);
+// console.log("Obteniendo usuario >>>", auth.currentUser.email);
+
+        let user = doc.data().email;
+        let post = doc.data().post; 
 
       dashboardPosts.innerHTML += `
         <div class="div-post">
@@ -54,7 +59,7 @@ export const Dashboard = () => {
               <p id="userID">${user}</p>
             </div>
             <div>
-              <button id="editButton">Editar</button>
+              <button id="editButton" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">Editar</button>
             </div>  
           </section>
           <section class="postBody">
@@ -66,7 +71,7 @@ export const Dashboard = () => {
              <div>
               <p id="likesCounter">aquivanloslikes</p>
               <button id="likeButton">imglike</button>
-              <button id="deleteButton">imgbotedebasura</button>
+              <button id="deleteButton" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">imgbotedebasura</button>
             </div>
           </section>
         </div>
@@ -75,6 +80,23 @@ export const Dashboard = () => {
     };
   });
 
+  // Botón para dar like a post
+  const addLikeButton = divDashboard.querySelectorAll('#likeButton');
+    addLikeButton.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const dataID = this.getAttribute('data-id');
+        likes(dataID);
+
+        // const snapPost = await getPost(id);
+        const post = snapPost.data();
+        const countLike = post.likes.length;
+        const existsLike = post.likes.includes(getUserLogged().email);
+
+        // Acá va a ir la parte para insertar el ícono y el contador en el DOM xD
+      });
+    });
+  
+  
   
   return divDashboard;
 
