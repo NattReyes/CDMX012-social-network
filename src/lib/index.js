@@ -23,6 +23,7 @@ export const savePost = async (inputPost) => {
     post: inputPost,
     timestamp: serverTimestamp(),
     email: auth.currentUser.email,
+    likes: ["esto debería ser un arreglo vacio"],
   });
 };
 
@@ -32,15 +33,13 @@ console.log("Posts data!!!!", allPosts);
 
 export const postCollection = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
 
-export const likes = async (id) => {
-  const email = auth.currentUser.email;
-  const collectionRef = doc(db, 'posts', id);
-  const res = await updateDoc(collectionRef, { likes: arrayUnion(email) });
-  return res;
-};
 
 export const getUserLogged = () => {
   const user = auth.currentUser;
   return user;
 };
 export const deletePost = async (id) => await deleteDoc(doc(db, 'posts', id))
+export const likes = (dataID) => {
+  console.log("testtt");
+ console.log('dataID :>> ', dataID);
+};

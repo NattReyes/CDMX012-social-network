@@ -50,7 +50,8 @@ export const Dashboard = () => {
 // console.log("Obteniendo usuario >>>", auth.currentUser.email);
 
         let user = doc.data().email;
-        let post = doc.data().post;
+        let post = doc.data().post; 
+        let likes = doc.data().likes;
 
       dashboardPosts.innerHTML += `
         <div class="div-post">
@@ -70,12 +71,13 @@ export const Dashboard = () => {
           <section class="postFooter">
              <div>
               <p id="likesCounter">aquivanloslikes</p>
-              <button id="likeButton">imglike</button>
-              <button class="deleteButton" value="${doc.id}" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">imgbotedebasura</button>
+              <button class="likeButton" value="${doc.id}">o</button>
+              <button id="deleteButton" style="display:${auth.currentUser.email === doc.data().email ? "block" : "none"}">imgbotedebasura</button>
             </div>
           </section>
         </div>
           `;
+
           const btnDeletePost = dashboardPosts.querySelectorAll('.deleteButton');
           btnDeletePost.forEach((btn) => {
             // eslint-disable-next-line func-names
@@ -95,16 +97,9 @@ export const Dashboard = () => {
         const dataID = this.getAttribute('data-id');
         likes(dataID);
 
-        // const snapPost = await getPost(id);
-        const post = snapPost.data();
-        const countLike = post.likes.length;
-        const existsLike = post.likes.includes(getUserLogged().email);
 
-        // Acá va a ir la parte para insertar el ícono y el contador en el DOM xD
       });
     });
-  
-  
   
   return divDashboard;
 
