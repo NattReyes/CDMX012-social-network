@@ -3,12 +3,14 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   serverTimestamp,
   orderBy,
   query,
   arrayUnion,
   doc,
   deleteDoc,
+  updateDoc,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 // eslint-disable-next-line import/no-cycle
@@ -44,3 +46,21 @@ export const getUserLogged = () => {
   return user;
 };
 export const deletePost = async (id) => await deleteDoc(doc(db, 'posts', id))
+
+//export const editPosts= (id) => getDocs(doc(db,'posts',id));
+export const getPost = async (id) => await getDoc(doc(db, 'posts', id))
+
+//export const updatePost = (id, newFields) => updateDoc(doc(db,'posts',id),newFields);
+
+export const updatePost = async (id, newPost) => {
+  const user = auth.currentUser;
+  if (user) {
+    const collectionRef = doc(db, 'posts', id);
+    console.log(collectionRef)
+    await updateDoc(collectionRef, {
+      post: newPost
+    });
+  }
+};
+
+//export const updatePost = (id, newPost) => updateDoc(doc(db,'posts',id), newPost);
